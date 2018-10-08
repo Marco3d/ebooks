@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Author;
+
 
 class AuthorController extends AppBaseController
 {
@@ -31,6 +34,7 @@ class AuthorController extends AppBaseController
     {
         $this->authorRepository->pushCriteria(new RequestCriteria($request));
         $authors = $this->authorRepository->all();
+        $authors = Author::orderBy('id', 'DESC')->paginate(3);
 
         return view('authors.index')
             ->with('authors', $authors);
@@ -56,8 +60,13 @@ class AuthorController extends AppBaseController
     public function store(CreateAuthorRequest $request)
     {
         $input = $request->all();
-
         $author = $this->authorRepository->create($input);
+
+        if ($request->file('image')) {
+            $path = Storage::disk('public')->put('photos',$request->file('image'));
+            $author->fill(['image' => asset($path)])->save();
+        }
+        
 
         Flash::success('Author saved successfully.');
 
@@ -123,6 +132,11 @@ class AuthorController extends AppBaseController
         }
 
         $author = $this->authorRepository->update($request->all(), $id);
+
+          if ($request->file('image')) {
+            $path = Storage::disk('public')->put('photos',$request->file('image'));
+            $author->fill(['image' => asset($path)])->save();
+        }
 
         Flash::success('Author updated successfully.');
 

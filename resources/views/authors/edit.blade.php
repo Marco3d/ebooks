@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($author, ['route' => ['authors.update', $author->id], 'method' => 'patch']) !!}
+                   {!! Form::model($author, ['route' => ['authors.update', $author->id], 'method' => 'patch', 'enctype' => 'multipart/form-data']) !!}
 
                         @include('authors.fields')
 
