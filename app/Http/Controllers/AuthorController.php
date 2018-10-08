@@ -22,6 +22,7 @@ class AuthorController extends AppBaseController
     public function __construct(AuthorRepository $authorRepo)
     {
         $this->authorRepository = $authorRepo;
+        $this->middleware('auth');
     }
 
     /**
@@ -34,7 +35,7 @@ class AuthorController extends AppBaseController
     {
         $this->authorRepository->pushCriteria(new RequestCriteria($request));
         $authors = $this->authorRepository->all();
-        $authors = Author::orderBy('id', 'DESC')->paginate(3);
+        $authors = Author::orderBy('id', 'DESC')->paginate(6);
 
         return view('authors.index')
             ->with('authors', $authors);
@@ -59,15 +60,20 @@ class AuthorController extends AppBaseController
      */
     public function store(CreateAuthorRequest $request)
     {
+         /*dd($request->file('image'));*/
+
+
         $input = $request->all();
         $author = $this->authorRepository->create($input);
 
-        if ($request->file('image')) {
-            $path = Storage::disk('public')->put('photos',$request->file('image'));
-            $author->fill(['image' => asset($path)])->save();
-        }
+         //subir imagen
         
+           if($request->file('image')){
 
+            $path = Storage::disk('public')->put('photos',  $request->file('image'));
+            $author->fill(['image' => asset($path)])->save();
+          }  
+       
         Flash::success('Author saved successfully.');
 
         return redirect(route('authors.index'));
@@ -123,7 +129,14 @@ class AuthorController extends AppBaseController
      */
     public function update($id, UpdateAuthorRequest $request)
     {
+        /* dd($request->file('image'));*/
+
+      
+
         $author = $this->authorRepository->findWithoutFail($id);
+
+
+
 
         if (empty($author)) {
             Flash::error('Author not found');
@@ -132,11 +145,18 @@ class AuthorController extends AppBaseController
         }
 
         $author = $this->authorRepository->update($request->all(), $id);
+        
 
-          if ($request->file('image')) {
-            $path = Storage::disk('public')->put('photos',$request->file('image'));
+         //IMAGE 
+        
+
+        if($request->file('image')){
+            $path = Storage::disk('public')->put('photos',  $request->file('image'));
             $author->fill(['image' => asset($path)])->save();
         }
+
+      
+        
 
         Flash::success('Author updated successfully.');
 
