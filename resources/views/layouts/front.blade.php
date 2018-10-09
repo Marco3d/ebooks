@@ -42,7 +42,7 @@
 
              <ul class="navbar-nav ml-auto  ">
                    <li class="nav-item mr-lg-3 space_login">
-                   <a class="btn btn-ingreso btn-sm " href=""></i><i class="far fa-user"></i> INGRESO</a>
+                   <a class="btn btn-ingreso btn-sm " href="{{ route('home') }}"></i><i class="far fa-user"></i> INGRESO</a>
                    </li>
                  
                                 

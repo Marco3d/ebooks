@@ -31,4 +31,20 @@ class FrontController extends Controller
         return view('sauthor')->with('author', $author);
     }
 
+     public function index2()
+    {
+        
+        $books = Book::orderBy('id', 'DESC')->paginate(9);
+        return view('index2',compact('books'));
+           
+    }
+
+    public function index3()
+    {
+        
+        $authors = Author::orderBy('id', 'DESC')->paginate(9);
+        return view('index3',compact('authors'));
+           
+    }
+
 }

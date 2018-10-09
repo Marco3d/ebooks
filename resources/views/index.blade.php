@@ -41,7 +41,7 @@
   
 
       </div>
-         <a href="" class="btn btn-author text-center">MÁS LIBROS</a>
+         <a href="{{ route('pbooks') }}" class="btn btn-author text-center">MÁS LIBROS</a>
      </div>
   <br>
 
@@ -87,7 +87,7 @@
     @endforeach
   
     </div>
-     <a href="" class="btn btn-primary text-center">MÁS AUTORES</a>
+     <a href="{{ route('pauthors') }}" class="btn btn-primary text-center">MÁS AUTORES</a>
   </div>
     <br>
 @endsection()

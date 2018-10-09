@@ -19,7 +19,7 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}
-    <p>{!! $author->image !!}</p>
+    <p><img src="{!! $author->image !!}" class="img-responsive"></p>
 </div>
 
 <!-- Created At Field -->

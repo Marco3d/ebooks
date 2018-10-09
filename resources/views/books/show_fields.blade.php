@@ -19,7 +19,7 @@
 <!-- Cover Field -->
 <div class="form-group">
     {!! Form::label('cover', 'Cover:') !!}
-    <p>{!! $book->cover !!}</p>
+    <p><img src="{!! $book->cover !!}" class="img-responsive"></p>
 </div>
 
 <!-- Author Id Field -->
