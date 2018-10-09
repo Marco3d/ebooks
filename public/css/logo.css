@@ -1,0 +1,23 @@
+
+.login-box-body, .register-box-body {
+   box-shadow: 0 5px 7px #e0e5e8 !important;
+}
+
+
+
+/* 
+CambiADO */
+.login-page, .register-page {
+    background: #fff;
+}
+
+
+
+
+.login-box, .register-box {
+    width: 400px;
+    margin: 7% auto;
+}
+
+
+

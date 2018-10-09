@@ -1,0 +1,35 @@
+.skin-blue .main-header .navbar {
+    background-color: #710000 !important;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #8C1E23 !important;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+
+.logotext{
+	font-family: 'Russo One', sans-serif;
+    color: #fff !important;
+}
+
+.navbar-nav>.user-menu .user-image {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+}
+
+.btn-primary{
+	background-color: #710000 !important;
+    color: #fff !important;
+    border-color:  #710000 !important;
+    border-radius: 15px;
+}
+
+.label-warning {
+    background-color: #337ab7  !important;
+    
+}

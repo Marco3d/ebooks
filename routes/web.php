@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'FrontController@index');
 
 
 Auth::routes();
@@ -26,3 +28,5 @@ Route::resource('authors', 'AuthorController');
 
 
 Route::resource('books', 'BookController');
+Route::get('/sbooks/{id}', 'FrontController@showBooks')->name('sbook');
+Route::get('/sauthors/{id}', 'FrontController@showAuthors')->name('sauthor');
